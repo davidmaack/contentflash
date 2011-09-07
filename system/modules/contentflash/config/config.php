@@ -32,4 +32,9 @@
  */
 $GLOBALS['TL_CTE']['miscellaneous']['flash'] = 'ContentFlash';
 
+
+/*
+ * Hooks
+ */
+$GLOBALS['TL_HOOKS']['parseBackendTemplate'][] = array('ContentFlashCallback', 'checkExtensions');
 ?>

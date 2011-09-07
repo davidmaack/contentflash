@@ -94,9 +94,17 @@ class ContentFlash extends ContentElement
                 $this->Template->height = floor($intMaxWidth * $size[1] / $size[0]);
         }
 
-        if (strlen($this->fl_flashvars))
+        $arrFlashvars = deserialize($this->fl_flashvars);
+        
+        if (count($arrFlashvars) >0)
         {
-                $this->Template->flashvars .= '&' . $this->String->decodeEntities($this->fl_flashvars);
+            foreach ($arrFlashvars as $flashVar){
+                if ($flashVar['key'] != '' && $flashVar['value'] != '')
+                {
+                    $this->Template->flashvars .= '&' . $flashVar['key'] . '=' . $flashVar['value'];
+                }
+            }
+                
         }
     }
 

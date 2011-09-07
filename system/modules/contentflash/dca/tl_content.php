@@ -59,9 +59,23 @@ $GLOBALS['TL_DCA']['tl_content']['fields']['fl_transparent'] = array
 $GLOBALS['TL_DCA']['tl_content']['fields']['fl_flashvars'] = array
 (
         'label'                   => &$GLOBALS['TL_LANG']['tl_content']['fl_flashvars'],
-        'exclude'                 => true,
-        'inputType'               => 'text',
-        'eval'                    => array('nospace'=>true, 'maxlength'=>255, 'tl_class'=>'long clr')
+        'exclude' => true,
+        'inputType' => 'multiColumnWizard', 
+        'eval' => array(
+            'tl_class'=>'clr',
+            'columnFields' => array(
+                'key' => array(
+                    'label' => &$GLOBALS['TL_LANG']['tl_content']['fl_key'],
+                    'inputType' => 'text',
+                    'eval' => array('nospace'=>true, 'style' => 'width:200px')
+                ),
+                'value' => array(
+                    'label' => &$GLOBALS['TL_LANG']['tl_content']['fl_value'],
+                    'inputType' => 'text',
+                    'eval' => array('nospace'=>true, 'style' => 'width:350px')
+                ),
+            )
+        )
 );
 
 $GLOBALS['TL_DCA']['tl_content']['fields']['fl_altContent'] = array

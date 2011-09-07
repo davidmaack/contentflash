@@ -33,6 +33,8 @@
 $GLOBALS['TL_LANG']['tl_content']['fl_size']           = array('Width and height', 'Please enter the width and height in pixel.');
 $GLOBALS['TL_LANG']['tl_content']['fl_transparent']    = array('Transparent movie', 'Make the Flash movie transparent (wmode = transparent).');
 $GLOBALS['TL_LANG']['tl_content']['fl_flashvars']      = array('FlashVars', 'Pass variables to the Flash movie (<em>var1=value1&amp;var2=value2</em>).');
+$GLOBALS['TL_LANG']['tl_content']['fl_key']            = array('Key', 'Name of the flashvar.');
+$GLOBALS['TL_LANG']['tl_content']['fl_value']          = array('Value', 'Vakue of the flashvar.');
 $GLOBALS['TL_LANG']['tl_content']['fl_altContent']     = array('Alternate content', 'The alternate content will be shown if the movie cannot be loaded. HTML tags are allowed.');
 $GLOBALS['TL_LANG']['tl_content']['fl_source']         = array('Source', 'Whether to use a file on the server or point to an external URL.');
 $GLOBALS['TL_LANG']['tl_content']['fl_interactive']    = array('Make interactive', 'Make the Flash movie interact with the browser (requires JavaScript).');
