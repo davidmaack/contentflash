@@ -72,7 +72,7 @@ $GLOBALS['TL_DCA']['tl_content']['fields']['fl_flashvars'] = array
                 'value' => array(
                     'label' => &$GLOBALS['TL_LANG']['tl_content']['fl_value'],
                     'inputType' => 'text',
-                    'eval' => array('nospace'=>true, 'style' => 'width:350px')
+                    'eval' => array('nospace'=>true, 'style' => 'width:395px')
                 ),
             )
         )
