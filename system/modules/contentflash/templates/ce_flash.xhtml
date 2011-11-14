@@ -1,4 +1,3 @@
-
 <div class="<?php echo $this->class; ?> block"<?php echo $this->cssID; ?><?php if ($this->style): ?> style="<?php echo $this->style; ?>"<?php endif; ?>>
 <?php if ($this->headline): ?>
 
@@ -23,16 +22,16 @@ function <?php echo $this->flashId; ?>_DoFSCommand(command, args) {
 if (Browser.Plugins.Flash.version > 0) {
   new Swiff("<?php echo $this->href; ?>", {
     id: "<?php echo $this->flashId; ?>",
-    width: <?php echo $this->width; ?>,
-    height: <?php echo $this->height; ?>,
+    width: "<?php echo $this->width; ?>",
+    height: "<?php echo $this->height; ?>",
 <?php if ($this->interactive): ?>
     properties : {
       name: "<?php echo $this->flashId; ?>"
     },
 <?php endif; ?>
     params : {
-<?php if (!$this->transparent): ?>
-      wMode: "window",
+<?php if ($this->transparent): ?>
+      wMode: "transparent",
 <?php endif; ?>
       allowFullScreen: true,
       flashvars: "<?php echo $this->flashvars; ?>"
