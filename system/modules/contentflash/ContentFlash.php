@@ -22,7 +22,7 @@
  *
  * PHP version 5
  * @copyright  MEN AT WORK 2011
- * @package    ContentFlash
+ * @package    Contentflash
  * @license    GNU/LGPL
  * @filesource
  */
@@ -51,12 +51,12 @@ class ContentFlash extends ContentElement
 
         if ($this->fl_source != 'external' && (!strlen($this->singleSRC) || !is_file(TL_ROOT . '/' . $this->singleSRC)))
         {
-                return '';
+            return '';
         }
 
         if (TL_MODE == 'BE')
         {
-                return $this->fl_altContent;
+            return $this->fl_altContent;
         }
 
         return parent::generate();
@@ -68,7 +68,7 @@ class ContentFlash extends ContentElement
     protected function compile()
     {
         $this->import('String');
-        
+
         $this->Template->src = $this->singleSRC;
         $this->Template->href = ($this->source == 'external') ? $this->url : $this->singleSRC;
         $this->Template->alt = $this->fl_altContent;
@@ -78,7 +78,7 @@ class ContentFlash extends ContentElement
         $this->Template->flashId = strlen($this->fl_flashID) ? $this->fl_flashID : 'swf_ce_' . $this->id;
         $this->Template->fsCommand = '  ' . preg_replace('/[\n\r]/', "\n  ", $this->String->decodeEntities($this->fl_flashJS));
         $this->Template->flashvars = 'URL=' . $this->Environment->base;
-        $this->Template->version = strlen($this->version) ? $this->version : '6.0.0';
+        $this->Template->version = strlen($this->fl_version) ? $this->fl_version : '6';
 
         $size = deserialize($this->fl_size);
 
@@ -90,21 +90,21 @@ class ContentFlash extends ContentElement
         // Adjust movie size
         if ($intMaxWidth > 0 && $size[0] > $intMaxWidth)
         {
-                $this->Template->width = $intMaxWidth;
-                $this->Template->height = floor($intMaxWidth * $size[1] / $size[0]);
+            $this->Template->width = $intMaxWidth;
+            $this->Template->height = floor($intMaxWidth * $size[1] / $size[0]);
         }
 
         $arrFlashvars = deserialize($this->fl_flashvars);
-        
-        if (count($arrFlashvars) >0)
+
+        if (count($arrFlashvars) > 0)
         {
-            foreach ($arrFlashvars as $flashVar){
+            foreach ($arrFlashvars as $flashVar)
+            {
                 if ($flashVar['key'] != '' && $flashVar['value'] != '')
                 {
                     $this->Template->flashvars .= '&' . $flashVar['key'] . '=' . $flashVar['value'];
                 }
             }
-                
         }
     }
 

@@ -13,13 +13,13 @@
 <!--[if gte IE 5]><script type="text/javascript" event="FSCommand(command,args)" for="<?php echo $this->flashId; ?>"><?php echo $this->flashId; ?>_DoFSCommand(command, args);</script><![endif]-->
 <?php endif; ?>
 <script type="text/javascript">
-<!--//--><![CDATA[//><!--
+/* <![CDATA[ */
 <?php if ($this->interactive): ?>
 function <?php echo $this->flashId; ?>_DoFSCommand(command, args) {
 <?php echo $this->fsCommand; ?> 
 }
 <?php endif; ?>
-if (Browser.Plugins.Flash.version > 0) {
+if (Browser.Plugins.Flash.version >= <?php echo $this->version; ?>) {
   new Swiff("<?php echo $this->href; ?>", {
     id: "<?php echo $this->flashId; ?>",
     width: "<?php echo $this->width; ?>",
@@ -39,7 +39,7 @@ if (Browser.Plugins.Flash.version > 0) {
     container: $('<?php echo $this->flashId; ?>_container')
   });
 }
-//--><!]]>
+/* ]]> */
 </script>
 <!-- indexer::continue -->
 

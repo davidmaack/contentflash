@@ -33,7 +33,7 @@
  */
 $GLOBALS['TL_DCA']['tl_content']['palettes']['__selector__'][] = 'fl_interactive';
 $GLOBALS['TL_DCA']['tl_content']['palettes']['__selector__'][] = 'fl_source';
-$GLOBALS['TL_DCA']['tl_content']['palettes']['flash'] = '{title_legend},type,headline;{config_legend},fl_size,fl_transparent,fl_flashvars,fl_altContent;{source_legend},fl_source;{interact_legend:hide},fl_interactive;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID,space';
+$GLOBALS['TL_DCA']['tl_content']['palettes']['flash'] = '{title_legend},type,headline;{config_legend},fl_size,fl_version,fl_transparent,fl_flashvars,fl_altContent;{source_legend},fl_source;{interact_legend:hide},fl_interactive;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID,space';
 
 $GLOBALS['TL_DCA']['tl_content']['subpalettes']['fl_interactive'] = 'fl_flashID,fl_flashJS';
 $GLOBALS['TL_DCA']['tl_content']['subpalettes']['fl_source_internal'] = 'singleSRC';
@@ -42,37 +42,45 @@ $GLOBALS['TL_DCA']['tl_content']['subpalettes']['fl_source_external'] = 'url';
 
 $GLOBALS['TL_DCA']['tl_content']['fields']['fl_size'] = array
 (
-        'label'                   => &$GLOBALS['TL_LANG']['tl_content']['fl_size'],
-        'exclude'                 => true,
-        'inputType'               => 'text',
-        'eval'                    => array('mandatory'=>true, 'multiple'=>true, 'size'=>2, 'rgxp'=>'digit', 'nospace'=>true, 'tl_class'=>'w50')
+        'label'                     => &$GLOBALS['TL_LANG']['tl_content']['fl_size'],
+        'exclude'                   => true,
+        'inputType'                 => 'text',
+        'eval'                      => array('mandatory'=>true, 'multiple'=>true, 'size'=>2, 'nospace'=>true, 'tl_class'=>'w50')
+);
+
+$GLOBALS['TL_DCA']['tl_content']['fields']['fl_version'] = array
+(
+        'label'                     => &$GLOBALS['TL_LANG']['tl_content']['fl_version'],
+        'exclude'                   => true,
+        'inputType'                 => 'text',
+        'eval'                      => array('rgxp' => 'digit', 'maxlength' => '2', 'nospace'=>true, 'tl_class'=>'w50')
 );
 	
 $GLOBALS['TL_DCA']['tl_content']['fields']['fl_transparent'] = array
 (
-        'label'                   => &$GLOBALS['TL_LANG']['tl_content']['fl_transparent'],
-        'exclude'                 => true,
-        'inputType'               => 'checkbox',
-        'eval'                    => array('tl_class'=>'w50 m12')
+        'label'                     => &$GLOBALS['TL_LANG']['tl_content']['fl_transparent'],
+        'exclude'                   => true,
+        'inputType'                 => 'checkbox',
+        'eval'                      => array('tl_class'=>'clr m12')
 );
 
 $GLOBALS['TL_DCA']['tl_content']['fields']['fl_flashvars'] = array
 (
-        'label'                   => &$GLOBALS['TL_LANG']['tl_content']['fl_flashvars'],
-        'exclude' => true,
-        'inputType' => 'multiColumnWizard', 
+        'label'                     => &$GLOBALS['TL_LANG']['tl_content']['fl_flashvars'],
+        'exclude'                   => true,
+        'inputType'                 => 'multiColumnWizard', 
         'eval' => array(
-            'tl_class'=>'clr',
+            'tl_class'              =>'clr',
             'columnFields' => array(
                 'key' => array(
-                    'label' => &$GLOBALS['TL_LANG']['tl_content']['fl_key'],
-                    'inputType' => 'text',
-                    'eval' => array('nospace'=>true, 'style' => 'width:200px')
+                    'label'         => &$GLOBALS['TL_LANG']['tl_content']['fl_key'],
+                    'inputType'     => 'text',
+                    'eval'          => array('nospace'=>true, 'style' => 'width:200px')
                 ),
                 'value' => array(
-                    'label' => &$GLOBALS['TL_LANG']['tl_content']['fl_value'],
-                    'inputType' => 'text',
-                    'eval' => array('nospace'=>true, 'style' => 'width:395px')
+                    'label'         => &$GLOBALS['TL_LANG']['tl_content']['fl_value'],
+                    'inputType'     => 'text',
+                    'eval'          => array('nospace'=>true, 'style' => 'width:395px')
                 ),
             )
         )

@@ -1,7 +1,5 @@
 <?php
-
-if (!defined('TL_ROOT'))
-    die('You cannot access this file directly!');
+if (!defined('TL_ROOT')) die('You cannot access this file directly!');
 
 /**
  * Contao Open Source CMS
@@ -25,32 +23,44 @@ if (!defined('TL_ROOT'))
  *
  * PHP version 5
  * @copyright  MEN AT WORK 2011
- * @package    contentFlash
+ * @package    contentflash
  * @license    GNU/LGPL
  * @filesource
  */
 
 /**
- * Callback Class for SyncCto
+ * Callback Class for Contentflash
  */
 class ContentFlashCallback extends Backend
 {
 
+    /**
+     * Check the required extensions and files for contentflash
+     * 
+     * @param string $strContent
+     * @param string $strTemplate
+     * @return string
+     */
     public function checkExtensions($strContent, $strTemplate)
     {
         if ($strTemplate == 'be_main')
         {
-            if (!is_array($_SESSION["TL_INFO"])) $_SESSION["TL_INFO"] = array();
-            
+            if (!is_array($_SESSION["TL_INFO"]))
+            {
+                $_SESSION["TL_INFO"] = array();
+            }
+
             // required extensions
-            $arrRequiredExtensions = array('multicolumnwizard');
+            $arrRequiredExtensions = array(
+                'MultiColumnWizard' => 'multicolumnwizard'
+            );
 
             // check for required extensions
-            foreach ($arrRequiredExtensions as $val)
+            foreach ($arrRequiredExtensions as $key => $val)
             {
                 if (!in_array($val, $this->Config->getActiveModules()))
                 {
-                    $_SESSION["TL_INFO"] = array_merge($_SESSION["TL_INFO"], array($val => 'Please install the required extension <strong>' . $val . '</strong>'));
+                    $_SESSION["TL_INFO"] = array_merge($_SESSION["TL_INFO"], array($val => 'Please install the required extension <strong>' . $key . '</strong>'));
                 }
                 else
                 {
@@ -60,12 +70,11 @@ class ContentFlashCallback extends Backend
                     }
                 }
             }
- 
         }
 
         return $strContent;
     }
- 
+
 }
 
 ?>

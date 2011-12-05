@@ -15,6 +15,7 @@
 CREATE TABLE `tl_content` (
   `fl_size` varchar(64) NOT NULL default '',
   `fl_transparent` char(1) NOT NULL default '',
+  `fl_version` varchar(16) NOT NULL default '',
   `fl_flashvars` text NULL,
   `fl_altContent` text NULL,
   `fl_source` varchar(32) NOT NULL default '',
