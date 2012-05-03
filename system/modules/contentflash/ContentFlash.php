@@ -79,12 +79,23 @@ class ContentFlash extends ContentElement
         $this->Template->fsCommand = '  ' . preg_replace('/[\n\r]/', "\n  ", $this->String->decodeEntities($this->fl_flashJS));
         $this->Template->flashvars = 'URL=' . $this->Environment->base;
         $this->Template->version = strlen($this->fl_version) ? $this->fl_version : '6';
-
+        $this->Template->useAltImg = false;
+        
         $size = deserialize($this->fl_size);
 
         $this->Template->width = $size[0];
         $this->Template->height = $size[1];
-
+        
+        //adding alternative content
+        $strImage =$this->fl_multiSRC;
+        
+        //add an image, if only one image was selected
+        if ($strImage !='')
+        {
+            $this->Template->useAltImg = true;
+            $this->Template->altImg = $strImage;
+        }
+        
         $intMaxWidth = (TL_MODE == 'BE') ? 320 : $GLOBALS['TL_CONFIG']['maxImageWidth'];
 
         // Adjust movie size
@@ -106,6 +117,27 @@ class ContentFlash extends ContentElement
                 }
             }
         }
+        
+        // HOOK: manipulate the Template
+        if (isset($GLOBALS['TL_HOOKS']['compileCeFlash']) && is_array($GLOBALS['TL_HOOKS']['compileCeFlash']))
+        {
+                foreach ($GLOBALS['TL_HOOKS']['compileCeFlash'] as $callback)
+                {
+                        $this->import($callback[0]);
+                        $this->$callback[0]->$callback[1]($arrFlashvars, $this);
+                }
+        }
+    }
+    
+    
+    public function getTemplate()
+    {
+        return $this->Template;
+    }
+    
+    public function setTemplate($strTemplate)
+    {
+        $this->Template = $strTemplate;
     }
 
 }

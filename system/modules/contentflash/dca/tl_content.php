@@ -33,7 +33,7 @@
  */
 $GLOBALS['TL_DCA']['tl_content']['palettes']['__selector__'][] = 'fl_interactive';
 $GLOBALS['TL_DCA']['tl_content']['palettes']['__selector__'][] = 'fl_source';
-$GLOBALS['TL_DCA']['tl_content']['palettes']['flash'] = '{title_legend},type,headline;{config_legend},fl_size,fl_version,fl_transparent,fl_flashvars,fl_altContent;{source_legend},fl_source;{interact_legend:hide},fl_interactive;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID,space';
+$GLOBALS['TL_DCA']['tl_content']['palettes']['flash'] = '{title_legend},type,headline;{config_legend},fl_size,fl_version,fl_transparent,fl_flashvars,fl_altContent,fl_multiSRC;{source_legend},fl_source;{interact_legend:hide},fl_interactive;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID,space';
 
 $GLOBALS['TL_DCA']['tl_content']['subpalettes']['fl_interactive'] = 'fl_flashID,fl_flashJS';
 $GLOBALS['TL_DCA']['tl_content']['subpalettes']['fl_source_internal'] = 'singleSRC';
@@ -92,7 +92,7 @@ $GLOBALS['TL_DCA']['tl_content']['fields']['fl_altContent'] = array
         'exclude'                 => true,
         'search'                  => true,
         'inputType'               => 'textarea',
-        'eval'                    => array('mandatory'=>true, 'allowHtml'=>true, 'style'=>'height:60px;', 'tl_class'=>'clr')
+        'eval'                    => array('allowHtml'=>true, 'style'=>'height:60px;', 'tl_class'=>'clr')
 );
 
 $GLOBALS['TL_DCA']['tl_content']['fields']['fl_source'] = array
@@ -130,5 +130,14 @@ $GLOBALS['TL_DCA']['tl_content']['fields']['fl_flashJS'] = array
         'inputType'               => 'textarea',
         'eval'                    => array('class'=>'monospace')
 );
+
+$GLOBALS['TL_DCA']['tl_content']['fields']['fl_multiSRC'] = array
+(
+    'label'                   => &$GLOBALS['TL_LANG']['tl_content']['fl_multiSRC'],
+    'exclude'                 => true,
+    'inputType'               => 'fileTree',
+    'eval'                    => array('extensions' => 'jpg,gif,png', 'fieldType' => 'radio', 'filesOnly' => true, 'files' => true, 'tl_class' => 'clr')
+);
+
 
 ?>

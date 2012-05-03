@@ -6,6 +6,9 @@
 
 <div id="<?php echo $this->flashId; ?>_container">
 <?php echo $this->alt; ?> 
+<?php if ($this->useAltImg): ?>
+<img src="<?php echo $this->altImg; ?>" alt="" />
+<?php endif; ?>
 </div>
 
 <!-- indexer::stop -->

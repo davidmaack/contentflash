@@ -41,6 +41,7 @@ $GLOBALS['TL_LANG']['tl_content']['fl_source']          = array('Quelle', 'Eine 
 $GLOBALS['TL_LANG']['tl_content']['fl_interactive']     = array('Interaktiv machen', 'Den Flash-Film mit dem Webbrowser über JavaScript interagieren lassen.');
 $GLOBALS['TL_LANG']['tl_content']['fl_flashID']         = array('Flash-Film-ID', 'Bitte geben Sie eine eindeutige Flash-Film-ID ein.');
 $GLOBALS['TL_LANG']['tl_content']['fl_flashJS']         = array('JavaScript _DoFSCommand(command, args) {', 'Bitte geben Sie den JavaScript-Code ein.');
+$GLOBALS['TL_LANG']['tl_content']['fl_multiSRC']        = array('Alternatives Bild', 'Das alternative Bild wird angezeigt, falls der Flash-Film nicht geladen werden kann.');
 
 /**
  * Legends

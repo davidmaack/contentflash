@@ -24,4 +24,5 @@ CREATE TABLE `tl_content` (
   `fl_interactive` char(1) NOT NULL default '',
   `fl_flashID` varchar(64) NOT NULL default '',
   `fl_flashJS` text NULL,
+  `fl_multiSRC` blob NULL,
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
